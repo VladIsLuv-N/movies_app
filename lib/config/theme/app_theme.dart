@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
-    primaryColor: Colors.blueGrey,
+    primaryColor: Colors.white,
     useMaterial3: true,
     brightness: Brightness.light,
 
@@ -10,15 +10,19 @@ class AppTheme {
 
     appBarTheme: const AppBarTheme(
       centerTitle: true,
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.white,
       surfaceTintColor: Colors.transparent,
     ),
 
     textTheme: const TextTheme(
       displaySmall: TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold
-      )
-    )
+        color: Colors.deepPurple,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'Merriweather',
+        fontSize: 20,
+      ),
+      bodySmall: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+      labelMedium: TextStyle(color: Colors.white, fontSize: 13, fontFamily: 'Merriweather',)
+    ),
   );
 }
