@@ -22,7 +22,17 @@ class AppTheme {
         fontSize: 20,
       ),
       bodySmall: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
-      labelMedium: TextStyle(color: Colors.white, fontSize: 13, fontFamily: 'Merriweather',)
+      labelMedium: TextStyle(
+        color: Colors.white,
+        fontSize: 13,
+        fontFamily: 'Merriweather',
+      ),
+      titleMedium: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w500,
+        fontSize: 15,
+        fontFamily: 'Merriweather',
+      ),
     ),
   );
 }
