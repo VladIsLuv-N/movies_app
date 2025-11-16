@@ -33,6 +33,11 @@ class AppTheme {
         fontSize: 15,
         fontFamily: 'Merriweather',
       ),
+      bodyMedium: TextStyle(
+        color: Colors.white54,
+        fontWeight: FontWeight.w500,
+        fontSize: 17,
+      )
     ),
   );
 }
