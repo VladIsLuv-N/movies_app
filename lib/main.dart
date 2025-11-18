@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/config/theme/app_theme.dart';
-import 'package:movies_app/presentation/screens/popular_movies/popular_movies_screens.dart';
+import 'package:movies_app/presentation/screens/home/home_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const PopularMoviesScreens(),
+      home: const HomeScreen(),
     );
   }
 }

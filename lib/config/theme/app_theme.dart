@@ -29,9 +29,9 @@ class AppTheme {
       ),
       titleMedium: TextStyle(
         color: Colors.black,
-        fontWeight: FontWeight.w500,
-        fontSize: 15,
-        fontFamily: 'Merriweather',
+        fontWeight: FontWeight.w600,
+        fontSize: 18,
+        fontFamily: 'Mulish',
       ),
       bodyMedium: TextStyle(
         color: Colors.white54,

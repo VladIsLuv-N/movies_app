@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/common/custom_sliver_appbar_widget.dart';
 import 'package:movies_app/core/common/movie_card_widget.dart';
+import 'package:movies_app/presentation/screens/movie_details/movie_details_screen.dart';
 
 class PopularMoviesScreens extends StatelessWidget {
   const PopularMoviesScreens({super.key});
@@ -24,7 +25,14 @@ class PopularMoviesScreens extends StatelessWidget {
                   title: 'MovieName',
                   score: '8.5',
                   movieDuration: '1h 49m',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MovieDetailsScreen(),
+                      ),
+                    );
+                  },
                 );
               },
             ),

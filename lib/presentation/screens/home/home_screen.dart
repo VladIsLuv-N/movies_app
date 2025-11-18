@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/common/movie_card_widget.dart';
+import 'package:movies_app/presentation/screens/popular_movies/popular_movies_screens.dart';
 import 'package:movies_app/presentation/widgets/home/home_header_widget.dart';
 import 'package:movies_app/presentation/widgets/home/movie_card_in_horisontal_list_widget.dart';
 
@@ -37,7 +38,16 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            HomeHeaderWidget(title: 'Popular', onPressed: () {}),
+            HomeHeaderWidget(
+              title: 'Popular',
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const PopularMoviesScreens(),
+                  ),
+                );
+              },
+            ),
             Expanded(
               child: ListView.separated(
                 itemCount: 10,
