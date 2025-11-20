@@ -32,6 +32,7 @@ class AppTheme {
         fontWeight: FontWeight.w600,
         fontSize: 18,
         fontFamily: 'Mulish',
+        height: 1.5
       ),
       bodyMedium: TextStyle(
         color: Colors.white54,
