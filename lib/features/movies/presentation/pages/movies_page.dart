@@ -1,0 +1,126 @@
+import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit%20copy/horrors_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit%20copy/horrors_movies_states.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_states.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_states.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit%20copy/upcoming_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit%20copy/upcoming_movies_states.dart';
+import 'package:clean_movies_app/features/movies/presentation/widgets/grid_movies.dart';
+import 'package:clean_movies_app/features/movies/presentation/widgets/movies_tabs.dart';
+import 'package:clean_movies_app/features/movies/presentation/widgets/search_button.dart';
+import 'package:clean_movies_app/features/movies/presentation/widgets/top_films_card.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class MoviesPage extends StatelessWidget {
+  const MoviesPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'What do you want to watch?',
+                style: theme.textTheme.headlineMedium,
+              ),
+              const SizedBox(height: 25),
+              const SearchButton(),
+              const SizedBox(height: 25),
+              SizedBox(
+                height: 300,
+                child: BlocBuilder<PopularMoviesCubit, PopularMoviesStates>(
+                  builder: (context, state) {
+                    if (state is PopularMoviesLoadingState) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    if (state is PopularMoviesLoadedState) {
+                      return ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 5,
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(width: 20),
+                        itemBuilder: (context, index) {
+                          return TopFilmsCard(
+                            posterUrl: state.movies[index].poster,
+                            number: index + 1,
+                          );
+                        },
+                      );
+                    }
+
+                    if (state is PopularMoviesErrorState) {
+                      return Center(child: Text(state.errorMessage));
+                    }
+
+                    return Container();
+                  },
+                ),
+              ),
+              const SizedBox(height: 25),
+              Expanded(
+                child: MoviesTabs(
+                  children: [
+                    BlocBuilder<TrendingMoviesCubit, TrendingMoviesStates>(
+                      builder: (context, state) {
+                        if (state is TrendingMoviesLoadingState) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+
+                        if (state is TrendingMoviesLoadedState) {
+                          return GridMovies(movies: state.movies);
+                        }
+
+                        return Container();
+                      },
+                    ),
+                    BlocBuilder<HorrorsMoviesCubit, HorrorsMoviesStates>(
+                      builder: (context, state) {
+                        if (state is HorrorsMoviesLoadingState) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+
+                        if (state is HorrorsMoviesLoadedState) {
+                          return GridMovies(movies: state.movies);
+                        }
+
+                        return Container();
+                      },
+                    ),
+                    BlocBuilder<UpcomingMoviesCubit, UpcomingMoviesStates>(
+                      builder: (context, state) {
+                        if (state is UpcomingMoviesLoadingState) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+
+                        if (state is UpcomingMoviesLoadedState) {
+                          return GridMovies(movies: state.movies);
+                        }
+
+                        return Container();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,12 @@
+import 'package:clean_movies_app/features/movies/domain/entities/movie.dart';
+import 'package:clean_movies_app/features/movies/domain/repositories/movies_repository.dart';
+
+class GetTrendingMovies {
+  final MoviesRepository repository;
+
+  GetTrendingMovies({required this.repository});
+
+  Future<List<Movie>> call() async {
+    return repository.getTrendingMovies();
+  }
+}

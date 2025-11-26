@@ -1,0 +1,11 @@
+import 'package:clean_movies_app/core/di/service_locator.dart';
+import 'package:clean_movies_app/movies_app.dart';
+import 'package:flutter/material.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await initGetIt();
+
+  runApp(const MoviesApp());
+}
