@@ -4,8 +4,7 @@
 ---
 
 ## 📸 Скриншоты  
-![screenshot_1](path_to_image)
-![screenshot_2](path_to_image)
+<img src="assets/images/scr1.png" alt="Описание" style="width: 30%;">
 
 ---
 
