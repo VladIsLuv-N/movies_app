@@ -7,6 +7,12 @@ class AppTheme {
 
     scaffoldBackgroundColor: const Color(0xFF242A32),
 
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      backgroundColor: Color(0xFF242A32),
+      actionsIconTheme: IconThemeData(color: Colors.white),
+    ),
+
     textTheme: const TextTheme(
       headlineMedium: TextStyle(
         fontFamily: 'Poppins',

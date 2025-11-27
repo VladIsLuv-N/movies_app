@@ -4,25 +4,30 @@ import 'package:flutter/material.dart';
 class MoviePosterWidget extends StatelessWidget {
   final String posterUrl;
   final double height;
+  final void Function()? onTap;
 
   const MoviePosterWidget({
     super.key,
     required this.posterUrl,
     required this.height,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: CachedNetworkImage(
-        height: height,
-        fit: BoxFit.cover,
-        imageUrl: posterUrl,
-        placeholder: (context, url) =>
-            const Center(child: CircularProgressIndicator()),
-        errorWidget: (context, url, error) =>
-            const Center(child: Icon(Icons.error)),
+    return GestureDetector(
+      onTap: onTap,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: CachedNetworkImage(
+          height: height,
+          fit: BoxFit.cover,
+          imageUrl: posterUrl,
+          placeholder: (context, url) =>
+              ColoredBox(color: Colors.grey.withValues(alpha: 0.1)),
+          errorWidget: (context, url, error) =>
+              const Center(child: Icon(Icons.error)),
+        ),
       ),
     );
   }

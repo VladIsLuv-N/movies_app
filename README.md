@@ -15,6 +15,7 @@
 ✔ Cubit управление состояниями                                          
 ✔ Разделение приложения по слоям (Clean Architecture)                                    
 ✔ Подключение зависимостей через GetIt                                            
+✔ Кэширование изображение через Сached_network_image                                            
 
 ---
 
@@ -23,6 +24,7 @@
 - **Dart**  
 - **Bloc (Cubit)**  
 - **GetIt**  
+- **Cached_network_image**  
 - **Dio**  
 - **Clean Architecture**  
 

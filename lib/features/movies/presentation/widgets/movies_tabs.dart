@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class MoviesTabs extends StatefulWidget {
   final List<Widget> children;
-  const MoviesTabs({super.key, required this.children});
+  final List<String> tabs;
+  const MoviesTabs({super.key, required this.children, required this.tabs});
 
   @override
   State<MoviesTabs> createState() => _MoviesTabsState();
@@ -10,8 +11,6 @@ class MoviesTabs extends StatefulWidget {
 
 class _MoviesTabsState extends State<MoviesTabs> {
   int selected = 0;
-
-  final tabs = ["Now playing", "Horrors", "Upcoming"];
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class _MoviesTabsState extends State<MoviesTabs> {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(tabs.length, (index) {
+          children: List.generate(widget.tabs.length, (index) {
             final isActive = index == selected;
 
             return GestureDetector(
@@ -29,7 +28,7 @@ class _MoviesTabsState extends State<MoviesTabs> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(tabs[index], style: theme.textTheme.bodyMedium),
+                  Text(widget.tabs[index], style: theme.textTheme.bodyMedium),
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 250),
                     height: 3,

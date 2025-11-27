@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 class GridMovies extends StatelessWidget {
   final List<Movie> movies;
+  final void Function()? onTap;
 
-  const GridMovies({super.key, required this.movies});
+  const GridMovies({super.key, required this.movies, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,11 @@ class GridMovies extends StatelessWidget {
         childAspectRatio: 0.70,
       ),
       itemBuilder: (context, index) {
-        return MoviePosterWidget(posterUrl: movies[index].poster, height: 100);
+        return MoviePosterWidget(
+          onTap: onTap,
+          posterUrl: movies[index].poster,
+          height: 100,
+        );
       },
     );
   }

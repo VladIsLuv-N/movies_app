@@ -6,6 +6,7 @@ import 'package:clean_movies_app/features/movies/presentation/cubits/trending_mo
 import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_states.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit%20copy/upcoming_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit%20copy/upcoming_movies_states.dart';
+import 'package:clean_movies_app/features/movies/presentation/pages/movie_detail_page.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/grid_movies.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/movies_tabs.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/search_button.dart';
@@ -50,6 +51,14 @@ class MoviesPage extends StatelessWidget {
                             const SizedBox(width: 20),
                         itemBuilder: (context, index) {
                           return TopFilmsCard(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const MovieDetailPage(),
+                                ),
+                              );
+                            },
                             posterUrl: state.movies[index].poster,
                             number: index + 1,
                           );
@@ -68,6 +77,7 @@ class MoviesPage extends StatelessWidget {
               const SizedBox(height: 25),
               Expanded(
                 child: MoviesTabs(
+                  tabs: ["Now playing", "Horrors", "Upcoming"],
                   children: [
                     BlocBuilder<TrendingMoviesCubit, TrendingMoviesStates>(
                       builder: (context, state) {
@@ -77,8 +87,22 @@ class MoviesPage extends StatelessWidget {
                           );
                         }
 
+                        if (state is TrendingMoviesErrorState) {
+                          return Center(child: Text(state.errorMessage));
+                        }
+
                         if (state is TrendingMoviesLoadedState) {
-                          return GridMovies(movies: state.movies);
+                          return GridMovies(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const MovieDetailPage(),
+                                ),
+                              );
+                            },
+                            movies: state.movies,
+                          );
                         }
 
                         return Container();
@@ -92,8 +116,22 @@ class MoviesPage extends StatelessWidget {
                           );
                         }
 
+                        if (state is HorrorsMoviesErrorState) {
+                          return Center(child: Text(state.errorMessage));
+                        }
+
                         if (state is HorrorsMoviesLoadedState) {
-                          return GridMovies(movies: state.movies);
+                          return GridMovies(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const MovieDetailPage(),
+                                ),
+                              );
+                            },
+                            movies: state.movies,
+                          );
                         }
 
                         return Container();
@@ -107,8 +145,22 @@ class MoviesPage extends StatelessWidget {
                           );
                         }
 
+                        if (state is UpcomingMoviesErrorState) {
+                          return Center(child: Text(state.errorMessage));
+                        }
+
                         if (state is UpcomingMoviesLoadedState) {
-                          return GridMovies(movies: state.movies);
+                          return GridMovies(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const MovieDetailPage(),
+                                ),
+                              );
+                            },
+                            movies: state.movies,
+                          );
                         }
 
                         return Container();

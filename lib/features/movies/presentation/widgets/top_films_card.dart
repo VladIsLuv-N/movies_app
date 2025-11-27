@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class TopFilmsCard extends StatelessWidget {
   final String posterUrl;
   final int number;
+  final void Function()? onTap;
 
   const TopFilmsCard({
     super.key,
     required this.posterUrl,
     required this.number,
+    required this.onTap,
   });
 
   @override
@@ -21,7 +23,13 @@ class TopFilmsCard extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [MoviePosterWidget(posterUrl: posterUrl, height: 250)],
+            children: [
+              MoviePosterWidget(
+                onTap: onTap,
+                posterUrl: posterUrl,
+                height: 250,
+              ),
+            ],
           ),
           Positioned(
             bottom: 0,
