@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class MoviePosterWidget extends StatelessWidget {
@@ -14,7 +15,14 @@ class MoviePosterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
-      child: Image.network(posterUrl, height: height, fit: BoxFit.cover),
+      child: CachedNetworkImage(
+        height: height,
+        fit: BoxFit.cover,
+        imageUrl: posterUrl,
+        placeholder: (context, url) =>
+            const Center(child: CircularProgressIndicator()),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
+      ),
     );
   }
 }
