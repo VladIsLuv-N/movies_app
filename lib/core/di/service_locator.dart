@@ -7,10 +7,11 @@ import 'package:clean_movies_app/features/movies/domain/usecases/get_movie.dart'
 import 'package:clean_movies_app/features/movies/domain/usecases/get_popular_movies.dart';
 import 'package:clean_movies_app/features/movies/domain/usecases/get_trending_movies.dart';
 import 'package:clean_movies_app/features/movies/domain/usecases/get_upcoming_movies.dart';
-import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit%20copy/horrors_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit/horrors_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/movie_details_cubit/movie_details_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_cubit.dart';
-import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit%20copy/upcoming_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit/upcoming_movies_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -43,4 +44,5 @@ void _initMoviesFeature() {
   getIt.registerFactory(() => TrendingMoviesCubit(getTrendingMovies: getIt()));
   getIt.registerFactory(() => HorrorsMoviesCubit(getHorrorsMovies: getIt()));
   getIt.registerFactory(() => UpcomingMoviesCubit(getUpcomingMovies: getIt()));
+  getIt.registerFactory(() => MovieDetailsCubit(getMovie: getIt()));
 }

@@ -1,11 +1,13 @@
-import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit%20copy/horrors_movies_cubit.dart';
-import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit%20copy/horrors_movies_states.dart';
+import 'package:clean_movies_app/core/di/service_locator.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit/horrors_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit/horrors_movies_states.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/movie_details_cubit/movie_details_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_states.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_states.dart';
-import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit%20copy/upcoming_movies_cubit.dart';
-import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit%20copy/upcoming_movies_states.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit/upcoming_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit/upcoming_movies_states.dart';
 import 'package:clean_movies_app/features/movies/presentation/pages/movie_detail_page.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/grid_movies.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/movies_tabs.dart';
@@ -55,7 +57,12 @@ class MoviesPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => const MovieDetailPage(),
+                                  builder: (_) => BlocProvider(
+                                    create: (context) =>
+                                        getIt<MovieDetailsCubit>()
+                                          ..loadMovie(state.movies[index].id),
+                                    child: const MovieDetailPage(),
+                                  ),
                                 ),
                               );
                             },
@@ -92,17 +99,7 @@ class MoviesPage extends StatelessWidget {
                         }
 
                         if (state is TrendingMoviesLoadedState) {
-                          return GridMovies(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const MovieDetailPage(),
-                                ),
-                              );
-                            },
-                            movies: state.movies,
-                          );
+                          return GridMovies(movies: state.movies);
                         }
 
                         return Container();
@@ -121,17 +118,7 @@ class MoviesPage extends StatelessWidget {
                         }
 
                         if (state is HorrorsMoviesLoadedState) {
-                          return GridMovies(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const MovieDetailPage(),
-                                ),
-                              );
-                            },
-                            movies: state.movies,
-                          );
+                          return GridMovies(movies: state.movies);
                         }
 
                         return Container();
@@ -150,17 +137,7 @@ class MoviesPage extends StatelessWidget {
                         }
 
                         if (state is UpcomingMoviesLoadedState) {
-                          return GridMovies(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const MovieDetailPage(),
-                                ),
-                              );
-                            },
-                            movies: state.movies,
-                          );
+                          return GridMovies(movies: state.movies);
                         }
 
                         return Container();

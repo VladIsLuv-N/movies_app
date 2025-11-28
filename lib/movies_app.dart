@@ -1,9 +1,9 @@
 import 'package:clean_movies_app/core/di/service_locator.dart';
 import 'package:clean_movies_app/core/theme/app_theme.dart';
-import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit%20copy/horrors_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit/horrors_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_cubit.dart';
-import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit%20copy/upcoming_movies_cubit.dart';
+import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit/upcoming_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/pages/movies_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

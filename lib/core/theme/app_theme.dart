@@ -26,6 +26,12 @@ class AppTheme {
         fontSize: 16,
         color: Color(0xFF67686D),
       ),
+      labelSmall: TextStyle(
+        fontFamily: 'Poppins',
+        fontSize: 16,
+        color: Color(0xFF92929D),
+        fontWeight: FontWeight.w500
+      ),
 
       bodyMedium: TextStyle(
         fontFamily: 'Poppins',

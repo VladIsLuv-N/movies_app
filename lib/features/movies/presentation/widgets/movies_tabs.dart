@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MoviesTabs extends StatefulWidget {
-  final List<Widget> children;
   final List<String> tabs;
-  const MoviesTabs({super.key, required this.children, required this.tabs});
+  final List<Widget> children;
+  const MoviesTabs({super.key, required this.tabs, required this.children});
 
   @override
   State<MoviesTabs> createState() => _MoviesTabsState();
