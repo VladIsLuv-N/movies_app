@@ -1,3 +1,4 @@
+import 'package:clean_movies_app/features/movies/data/models/actor_model.dart';
 import 'package:clean_movies_app/features/movies/domain/entities/movie.dart';
 
 class MovieModel {
@@ -10,6 +11,7 @@ class MovieModel {
   final String poster;
   final String backdrop;
   final String genre;
+  final List<ActorModel>? persons;
 
   MovieModel({
     required this.id,
@@ -21,6 +23,7 @@ class MovieModel {
     required this.poster,
     required this.backdrop,
     required this.genre,
+    this.persons,
   });
 
   factory MovieModel.fromJson(Map<String, dynamic> json) {
@@ -34,21 +37,12 @@ class MovieModel {
       poster: json['poster']['url'] as String,
       backdrop: json['backdrop']['url'] as String,
       genre: (json['genres'] as List)[0]['name'] as String,
+      persons: json['persons'] != null
+          ? (json['persons'] as List)
+                .map((actor) => ActorModel.fromJson(actor))
+                .toList()
+          : null,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'year': year,
-      'description': description,
-      'rating': rating,
-      'movieLength': movieLength,
-      'poster': poster,
-      'backdrop': backdrop,
-      'genre': genre,
-    };
   }
 
   Movie toEntity() {
@@ -62,6 +56,7 @@ class MovieModel {
       poster: poster,
       backdrop: backdrop,
       genre: genre,
+      persons: persons?.map((actor) => actor.toEntity()).toList(),
     );
   }
 }

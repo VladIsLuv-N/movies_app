@@ -1,3 +1,5 @@
+import 'package:clean_movies_app/features/movies/domain/entities/actor.dart';
+
 class Movie {
   final int id;
   final String name;
@@ -8,6 +10,7 @@ class Movie {
   final String poster;
   final String backdrop;
   final String genre;
+  final List<Actor>? persons;
 
   Movie({
     required this.id,
@@ -19,5 +22,6 @@ class Movie {
     required this.poster,
     required this.backdrop,
     required this.genre,
+    this.persons,
   });
 }

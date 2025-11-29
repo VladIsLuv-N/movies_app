@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/movie_details_cubit/movie_details_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/movie_details_cubit/movie_details_states.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/header_movie_details.dart';
@@ -63,15 +64,47 @@ class MovieDetailPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 30,
-                    ).copyWith(top: 30),
+                      vertical: 30,
+                    ),
                     child: MoviesTabs(
                       tabs: ['Description', 'Cast', 'Reviews'],
                       children: [
-                        Text(
-                          state.movie.description,
-                          style: theme.textTheme.bodyMedium,
+                        SingleChildScrollView(
+                          child: Text(
+                            state.movie.description,
+                            style: theme.textTheme.bodyMedium,
+                          ),
                         ),
-                        const Center(child: Text('Cast')),
+                        state.movie.persons != null
+                            ? GridView.builder(
+                                itemCount: state.movie.persons?.length,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 10,
+                                      mainAxisSpacing: 30,
+                                    ),
+                                itemBuilder: (context, index) => SizedBox(
+                                  width: 100,
+                                  child: Column(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundColor: Colors.grey.withValues(
+                                          alpha: 0.1,
+                                        ),
+                                        radius: 50,
+                                        backgroundImage:
+                                            CachedNetworkImageProvider(
+                                              state.movie.persons![index].photo,
+                                            ),
+                                      ),
+                                      const SizedBox(height: 15),
+                                      Text(state.movie.persons![index].name),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : const Center(child: Text('No actors')),
                         const Center(child: Text('Reviews')),
                       ],
                     ),
