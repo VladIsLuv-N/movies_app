@@ -22,6 +22,10 @@ class MovieDetailPage extends StatelessWidget {
           );
         }
 
+        if (state is MovieDetailsErrorState) {
+          return Scaffold(body: Center(child: Text(state.errorMessage)));
+        }
+
         if (state is MovieDetailsLoadedState) {
           return Scaffold(
             appBar: AppBar(
@@ -99,7 +103,7 @@ class MovieDetailPage extends StatelessWidget {
                                             ),
                                       ),
                                       const SizedBox(height: 15),
-                                      Text(state.movie.persons![index].name),
+                                      Text(state.movie.persons![index].name ?? ''),
                                     ],
                                   ),
                                 ),

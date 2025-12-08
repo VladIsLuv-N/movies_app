@@ -72,7 +72,8 @@ class MoviesRemoteDatasource {
       final movie = MovieModel.fromJson(response.data);
 
       return movie;
-    } catch (_) {
+    } catch (e) {
+      print(e.toString());
       throw 'Ошибка получения фильма';
     }
   }
