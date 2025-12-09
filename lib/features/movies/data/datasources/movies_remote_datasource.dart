@@ -73,7 +73,6 @@ class MoviesRemoteDatasource {
 
       return movie;
     } catch (e) {
-      print(e.toString());
       throw 'Ошибка получения фильма';
     }
   }
