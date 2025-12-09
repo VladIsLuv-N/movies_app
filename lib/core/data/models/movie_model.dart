@@ -1,5 +1,5 @@
 import 'package:clean_movies_app/features/movies/data/models/actor_model.dart';
-import 'package:clean_movies_app/features/movies/domain/entities/movie.dart';
+import 'package:clean_movies_app/core/domain/entities/movie.dart';
 
 class MovieModel {
   final int id;

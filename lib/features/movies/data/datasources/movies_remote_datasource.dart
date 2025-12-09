@@ -1,4 +1,4 @@
-import 'package:clean_movies_app/features/movies/data/models/movie_model.dart';
+import 'package:clean_movies_app/core/data/models/movie_model.dart';
 import 'package:dio/dio.dart';
 
 class MoviesRemoteDatasource {

@@ -1,7 +1,5 @@
-import 'package:clean_movies_app/core/di/service_locator.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit/horrors_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit/horrors_movies_states.dart';
-import 'package:clean_movies_app/features/movies/presentation/cubits/movie_details_cubit/movie_details_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_states.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_cubit.dart';
@@ -57,11 +55,8 @@ class MoviesPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => BlocProvider(
-                                    create: (context) =>
-                                        getIt<MovieDetailsCubit>()
-                                          ..loadMovie(state.movies[index].id),
-                                    child: const MovieDetailPage(),
+                                  builder: (_) => MovieDetailPage(
+                                    id: state.movies[index].id,
                                   ),
                                 ),
                               );

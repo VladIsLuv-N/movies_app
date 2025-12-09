@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clean_movies_app/core/di/service_locator.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/movie_details_cubit/movie_details_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/movie_details_cubit/movie_details_states.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/header_movie_details.dart';
@@ -8,7 +9,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MovieDetailPage extends StatelessWidget {
-  const MovieDetailPage({super.key});
+  final int id;
+  const MovieDetailPage({super.key, required this.id});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<MovieDetailsCubit>()..loadMovie(id),
+      child: const _MovieDetailView(),
+    );
+  }
+}
+
+class _MovieDetailView extends StatelessWidget {
+  const _MovieDetailView();
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +117,9 @@ class MovieDetailPage extends StatelessWidget {
                                             ),
                                       ),
                                       const SizedBox(height: 15),
-                                      Text(state.movie.persons![index].name ?? ''),
+                                      Text(
+                                        state.movie.persons![index].name ?? '',
+                                      ),
                                     ],
                                   ),
                                 ),
