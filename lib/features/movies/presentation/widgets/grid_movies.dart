@@ -1,4 +1,4 @@
-import 'package:clean_movies_app/core/domain/entities/movie.dart';
+import 'package:clean_movies_app/features/movies/domain/entities/movie.dart';
 import 'package:clean_movies_app/features/movies/presentation/pages/movie_detail_page.dart';
 import 'package:clean_movies_app/core/widgets/movie_poster_widget.dart';
 import 'package:flutter/material.dart';

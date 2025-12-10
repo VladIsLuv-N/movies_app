@@ -1,5 +1,5 @@
 import 'package:clean_movies_app/features/movies/data/datasources/movies_remote_datasource.dart';
-import 'package:clean_movies_app/core/domain/entities/movie.dart';
+import 'package:clean_movies_app/features/movies/domain/entities/movie.dart';
 import 'package:clean_movies_app/features/movies/domain/repositories/movies_repository.dart';
 
 class MoviesRepositoryImpl implements MoviesRepository {

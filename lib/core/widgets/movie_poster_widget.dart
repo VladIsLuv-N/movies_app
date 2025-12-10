@@ -25,8 +25,12 @@ class MoviePosterWidget extends StatelessWidget {
           imageUrl: posterUrl,
           placeholder: (context, url) =>
               ColoredBox(color: Colors.grey.withValues(alpha: 0.1)),
-          errorWidget: (context, url, error) =>
-              const Center(child: Icon(Icons.error)),
+          errorWidget: (context, url, error) => Container(
+            height: height,
+            width: 110,
+            color: Colors.grey.withValues(alpha: 0.1),
+            child: const Center(child: Icon(Icons.error_outline)),
+          ),
         ),
       ),
     );
