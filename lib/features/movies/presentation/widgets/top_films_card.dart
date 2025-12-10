@@ -1,5 +1,5 @@
 import 'package:clean_movies_app/core/widgets/outline_text.dart';
-import 'package:clean_movies_app/features/movies/presentation/widgets/movie_poster_widget.dart';
+import 'package:clean_movies_app/core/widgets/movie_poster_widget.dart';
 import 'package:flutter/material.dart';
 
 class TopFilmsCard extends StatelessWidget {

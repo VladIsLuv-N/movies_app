@@ -1,3 +1,4 @@
+import 'package:clean_movies_app/core/widgets/movie_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
@@ -20,6 +21,7 @@ class SearchPage extends StatelessWidget {
               ),
               const SizedBox(height: 25),
               TextField(
+                autofocus: true,
                 cursorColor: Colors.white,
                 style: theme.textTheme.labelMedium?.copyWith(
                   color: Colors.white,
@@ -37,6 +39,23 @@ class SearchPage extends StatelessWidget {
                   ),
                   filled: true,
                   fillColor: const Color(0xFF3A3F47),
+                ),
+              ),
+              const SizedBox(height: 25),
+              Expanded(
+                child: ListView.separated(
+                  itemCount: 20,
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 15),
+                  itemBuilder: (context, index) {
+                    return const MovieCardWidget(
+                      title: 'SpiderMan',
+                      raiting: 9.5,
+                      genre: 'Action',
+                      year: 2025,
+                      minutes: 136,
+                    );
+                  },
                 ),
               ),
             ],

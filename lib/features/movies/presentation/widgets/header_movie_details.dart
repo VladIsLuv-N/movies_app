@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clean_movies_app/features/movies/presentation/widgets/movie_poster_widget.dart';
+import 'package:clean_movies_app/core/widgets/movie_poster_widget.dart';
 import 'package:flutter/material.dart';
 
 class HeaderMovieDetails extends StatelessWidget {
@@ -37,7 +37,7 @@ class HeaderMovieDetails extends StatelessWidget {
               placeholder: (context, url) =>
                   ColoredBox(color: Colors.grey.withValues(alpha: 0.1)),
               errorWidget: (context, url, error) =>
-                  const Center(child: Icon(Icons.error)),
+                  const Center(child: Icon(Icons.error_outline)),
             ),
           ),
           Container(
