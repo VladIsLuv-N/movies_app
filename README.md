@@ -4,7 +4,7 @@
 ---
 
 ## 📸 Скриншоты  
-<img src="assets/images/scr1.png" alt="" style="width: 30%;"><img src="assets/images/scr2.png" alt="" style="width: 30%;">
+<img src="assets/images/scr1.png" alt="" style="width: 30%;"><img src="assets/images/scr2.png" alt="" style="width: 30%;"><img src="assets/images/scr3.png" alt="" style="width: 30%;">
 
 ---
 
