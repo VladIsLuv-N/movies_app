@@ -12,17 +12,23 @@ import 'package:clean_movies_app/features/movies/presentation/cubits/movie_detai
 import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit/upcoming_movies_cubit.dart';
+import 'package:clean_movies_app/features/search/data/datasources/search_remote_datasource.dart';
+import 'package:clean_movies_app/features/search/data/repositories_impl/search_repository_impl.dart';
+import 'package:clean_movies_app/features/search/domain/repositories/search_repostitory.dart';
+import 'package:clean_movies_app/features/search/domain/usecases/get_search_movies.dart';
+import 'package:clean_movies_app/features/search/presentation/cubits/search_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.I;
-
+//6JCPVNA-ZN94NP2-GXE66NZ-MT0GQRV     QVPJHSV-Y8V4G70-J0J9VBT-AB0Z0WP
 Future<void> initGetIt() async {
   getIt.registerLazySingleton<Dio>(
-    () => ApiClient(apiKey: 'QVPJHSV-Y8V4G70-J0J9VBT-AB0Z0WP').dio,
+    () => ApiClient(apiKey: '6JCPVNA-ZN94NP2-GXE66NZ-MT0GQRV').dio,
   );
 
   _initMoviesFeature();
+  _initSearchFeature();
 }
 
 void _initMoviesFeature() {
@@ -45,4 +51,18 @@ void _initMoviesFeature() {
   getIt.registerFactory(() => HorrorsMoviesCubit(getHorrorsMovies: getIt()));
   getIt.registerFactory(() => UpcomingMoviesCubit(getUpcomingMovies: getIt()));
   getIt.registerFactory(() => MovieDetailsCubit(getMovie: getIt()));
+}
+
+void _initSearchFeature() {
+  getIt.registerLazySingleton<SearchRemoteDatasource>(
+    () => SearchRemoteDatasource(client: getIt()),
+  );
+
+  getIt.registerLazySingleton<SearchRepostitory>(
+    () => SearchRepositoryImpl(api: getIt()),
+  );
+
+  getIt.registerLazySingleton(() => GetSearchMovies(repository: getIt()));
+
+  getIt.registerFactory(() => SearchCubit(getSearchMovies: getIt()));
 }

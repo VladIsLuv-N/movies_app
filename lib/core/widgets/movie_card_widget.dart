@@ -7,6 +7,7 @@ class MovieCardWidget extends StatelessWidget {
   final int year;
   final int minutes;
   final String genre;
+  final String posterUrl;
 
   const MovieCardWidget({
     super.key,
@@ -15,6 +16,7 @@ class MovieCardWidget extends StatelessWidget {
     required this.year,
     required this.minutes,
     required this.genre,
+    required this.posterUrl,
   });
 
   @override
@@ -23,11 +25,7 @@ class MovieCardWidget extends StatelessWidget {
 
     return Row(
       children: [
-        const MoviePosterWidget(
-          posterUrl:
-              'https://avatars.mds.yandex.net/get-kinopoisk-image/10853012/79b61479-348c-4639-b983-71ec324fdc6e/300x450',
-          height: 160,
-        ),
+        MoviePosterWidget(posterUrl: posterUrl, height: 160),
         const SizedBox(width: 15),
         Expanded(
           child: Column(

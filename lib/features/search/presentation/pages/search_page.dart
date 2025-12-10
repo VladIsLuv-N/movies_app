@@ -1,8 +1,24 @@
+import 'package:clean_movies_app/core/di/service_locator.dart';
 import 'package:clean_movies_app/core/widgets/movie_card_widget.dart';
+import 'package:clean_movies_app/features/search/presentation/cubits/search_cubit.dart';
+import 'package:clean_movies_app/features/search/presentation/cubits/search_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<SearchCubit>(),
+      child: const _SearchView(),
+    );
+  }
+}
+
+class _SearchView extends StatelessWidget {
+  const _SearchView();
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +37,9 @@ class SearchPage extends StatelessWidget {
               ),
               const SizedBox(height: 25),
               TextField(
+                onChanged: (value) {
+                  context.read<SearchCubit>().loadSearchMovies(value);
+                },
                 autofocus: true,
                 cursorColor: Colors.white,
                 style: theme.textTheme.labelMedium?.copyWith(
@@ -42,21 +61,38 @@ class SearchPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 25),
-              Expanded(
-                child: ListView.separated(
-                  itemCount: 20,
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 15),
-                  itemBuilder: (context, index) {
-                    return const MovieCardWidget(
-                      title: 'SpiderMan',
-                      raiting: 9.5,
-                      genre: 'Action',
-                      year: 2025,
-                      minutes: 136,
+              BlocBuilder<SearchCubit, SearchState>(
+                builder: (context, state) {
+                  if (state is SearchLoadingState) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  if (state is SearchErrorState) {
+                    return Center(child: Text(state.errorMessage));
+                  }
+
+                  if (state is SearchLoadedState) {
+                    return Expanded(
+                      child: ListView.separated(
+                        itemCount: state.movies.length,
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: 15),
+                        itemBuilder: (context, index) {
+                          return MovieCardWidget(
+                            posterUrl: state.movies[index].poster,
+                            title: state.movies[index].name,
+                            raiting: state.movies[index].rating,
+                            genre: state.movies[index].genre,
+                            year: state.movies[index].year,
+                            minutes: state.movies[index].movieLength,
+                          );
+                        },
+                      ),
                     );
-                  },
-                ),
+                  }
+
+                  return Container();
+                },
               ),
             ],
           ),
