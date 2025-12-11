@@ -18,8 +18,38 @@ class SearchPage extends StatelessWidget {
   }
 }
 
-class _SearchView extends StatelessWidget {
+class _SearchView extends StatefulWidget {
   const _SearchView();
+
+  @override
+  State<_SearchView> createState() => _SearchViewState();
+}
+
+class _SearchViewState extends State<_SearchView> {
+  final _scrollController = ScrollController();
+  String currentQuery = "";
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController.addListener(() {
+      final cubit = context.read<SearchCubit>();
+
+      if (_scrollController.position.pixels >=
+              _scrollController.position.maxScrollExtent - 300 &&
+          cubit.state.hasMore &&
+          (cubit.state is! SearchLoadingMoreState)) {
+        cubit.loadMore(currentQuery);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +69,16 @@ class _SearchView extends StatelessWidget {
               const SizedBox(height: 25),
               SearchTextFieldWidget(
                 onChanged: (value) {
+                  currentQuery = value;
                   context.read<SearchCubit>().loadSearchMovies(value);
                 },
               ),
               const SizedBox(height: 25),
               BlocBuilder<SearchCubit, SearchState>(
+                buildWhen: (prev, next) {
+                  if (next is SearchLoadingMoreState) return false;
+                  return true;
+                },
                 builder: (context, state) {
                   if (state is SearchLoadingState) {
                     return const Expanded(
@@ -51,24 +86,41 @@ class _SearchView extends StatelessWidget {
                     );
                   }
 
-                  if (state is SearchErrorState) {
-                    return Expanded(child: Center(child: Text(state.errorMessage)));
+                  if (state is SearchErrorState && state.movies.isEmpty) {
+                    return Expanded(
+                      child: Center(child: Text(state.errorMessage)),
+                    );
                   }
 
                   if (state is SearchLoadedState) {
                     return Expanded(
                       child: ListView.separated(
-                        itemCount: state.movies.length,
+                        controller: _scrollController,
+                        itemCount:
+                            state.movies.length +
+                            (state is SearchLoadingMoreState ? 1 : 0),
                         separatorBuilder: (context, index) =>
                             const SizedBox(height: 15),
                         itemBuilder: (context, index) {
+                          final isLoader = index == state.movies.length;
+
+                          if (isLoader) {
+                            return const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: Center(child: CircularProgressIndicator()),
+                            );
+                          }
+
+                          final movie = state.movies[index];
+
                           return MovieCardWidget(
-                            posterUrl: state.movies[index].poster ?? '',
-                            title: state.movies[index].name,
-                            raiting: state.movies[index].rating,
-                            genre: state.movies[index].genre ?? '',
-                            year: state.movies[index].year ?? 0,
-                            minutes: state.movies[index].movieLength ?? 0,
+                            id: movie.id,
+                            posterUrl: movie.poster ?? '',
+                            title: movie.name,
+                            raiting: movie.rating,
+                            genre: movie.genre ?? '',
+                            year: movie.year ?? 0,
+                            minutes: movie.movieLength ?? 0,
                           );
                         },
                       ),

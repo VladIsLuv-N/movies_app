@@ -1,7 +1,9 @@
 import 'package:clean_movies_app/core/widgets/movie_poster_widget.dart';
+import 'package:clean_movies_app/features/movies/presentation/pages/movie_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class MovieCardWidget extends StatelessWidget {
+  final int id;
   final String title;
   final double raiting;
   final int year;
@@ -17,6 +19,7 @@ class MovieCardWidget extends StatelessWidget {
     required this.minutes,
     required this.genre,
     required this.posterUrl,
+    required this.id,
   });
 
   @override
@@ -25,7 +28,15 @@ class MovieCardWidget extends StatelessWidget {
 
     return Row(
       children: [
-        MoviePosterWidget(posterUrl: posterUrl, height: 160),
+        MoviePosterWidget(
+          posterUrl: posterUrl,
+          height: 160,
+          onTap: () {
+            Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => MovieDetailPage(id: id)));
+          },
+        ),
         const SizedBox(width: 15),
         Expanded(
           child: Column(

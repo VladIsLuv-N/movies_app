@@ -1,5 +1,5 @@
-import 'package:clean_movies_app/features/search/domain/entities/search_movie.dart';
+import 'package:clean_movies_app/features/search/domain/entities/search_query.dart';
 
 abstract class SearchRepostitory {
-  Future<List<SearchMovie>> getSearchMovies(String query);
+  Future<SearchQuery> getSearchMovies(String query, int page);
 }
