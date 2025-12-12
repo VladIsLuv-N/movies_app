@@ -1,0 +1,14 @@
+{
+  "homePageTitle": "What do you want to watch?",
+  "search": "Search",
+  "nowPlaying": "Now playing",
+  "horrors": "Horrors",
+  "upcoming": "Upcoming",
+  "getMovieError": "Get movie error",
+  "getMoviesError": "Get movies error",
+  "detail": "Detail",
+  "minutes": "{minutes} minutes",
+  "description": "Description",
+  "cast": "Cast",
+  "reviews": "Reviews"
+}

@@ -17,7 +17,7 @@ class MoviesRemoteDatasource {
 
       return moviesList;
     } catch (_) {
-      throw 'Ошибка получения фильмов';
+      throw 'Get movies error';
     }
   }
 
@@ -32,7 +32,7 @@ class MoviesRemoteDatasource {
 
       return moviesList;
     } catch (_) {
-      throw 'Ошибка получения фильмов';
+      throw 'Get movies error';
     }
   }
 
@@ -47,7 +47,7 @@ class MoviesRemoteDatasource {
 
       return moviesList;
     } catch (_) {
-      throw 'Ошибка получения фильмов';
+      throw 'Get movies error';
     }
   }
 
@@ -62,7 +62,7 @@ class MoviesRemoteDatasource {
 
       return moviesList;
     } catch (_) {
-      throw 'Ошибка получения фильмов';
+      throw 'Get movies error';
     }
   }
 
@@ -73,7 +73,7 @@ class MoviesRemoteDatasource {
 
       return movie;
     } catch (e) {
-      throw 'Ошибка получения фильма';
+      throw 'Get movie error';
     }
   }
 }

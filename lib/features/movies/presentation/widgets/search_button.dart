@@ -1,4 +1,5 @@
 import 'package:clean_movies_app/features/search/presentation/pages/search_page.dart';
+import 'package:clean_movies_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class SearchButton extends StatelessWidget {
@@ -23,7 +24,7 @@ class SearchButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Search', style: theme.textTheme.labelMedium),
+            Text(S.of(context).search, style: theme.textTheme.labelMedium),
             const ImageIcon(
               AssetImage('assets/icons/search.png'),
               color: Color(0xFF67686D),

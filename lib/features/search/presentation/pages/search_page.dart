@@ -3,6 +3,7 @@ import 'package:clean_movies_app/core/widgets/movie_card_widget.dart';
 import 'package:clean_movies_app/features/search/presentation/cubits/search_cubit.dart';
 import 'package:clean_movies_app/features/search/presentation/cubits/search_state.dart';
 import 'package:clean_movies_app/features/search/presentation/widgets/search_text_field_widget.dart';
+import 'package:clean_movies_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,17 +57,24 @@ class _SearchViewState extends State<_SearchView> {
     final theme = Theme.of(context);
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          S.of(context).search,
+          style: theme.textTheme.headlineMedium,
+        ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'What do you want to watch?',
-                style: theme.textTheme.headlineMedium,
-              ),
-              const SizedBox(height: 25),
               SearchTextFieldWidget(
                 onChanged: (value) {
                   currentQuery = value;

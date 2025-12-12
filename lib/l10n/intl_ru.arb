@@ -1,0 +1,14 @@
+{
+  "homePageTitle": "Что вы хотите посмотреть?",
+  "search": "Поиск",
+  "nowPlaying": "Смотрят сейчас",
+  "horrors": "Ужасы",
+  "upcoming": "Скоро",
+  "getMovieError": "Ошибка получения фильма",
+  "getMoviesError": "Ошибка получения фильмов",
+  "detail": "Детали",
+  "minutes": "{minutes} минут",
+  "description": "Описание",
+  "cast": "Актеры",
+  "reviews": "Отзывы"
+}

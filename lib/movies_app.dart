@@ -5,8 +5,10 @@ import 'package:clean_movies_app/features/movies/presentation/cubits/popular_mov
 import 'package:clean_movies_app/features/movies/presentation/cubits/trending_movies_cubit/trending_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/upcoming_movies_cubit/upcoming_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/pages/movies_page.dart';
+import 'package:clean_movies_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MoviesApp extends StatelessWidget {
   const MoviesApp({super.key});
@@ -15,6 +17,13 @@ class MoviesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       theme: AppTheme.darkTheme,
       home: MultiBlocProvider(
         providers: [

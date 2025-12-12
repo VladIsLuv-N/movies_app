@@ -11,6 +11,7 @@ import 'package:clean_movies_app/features/movies/presentation/widgets/grid_movie
 import 'package:clean_movies_app/features/movies/presentation/widgets/movies_tabs.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/search_button.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/top_films_card.dart';
+import 'package:clean_movies_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +30,7 @@ class MoviesPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'What do you want to watch?',
+                S.of(context).homePageTitle,
                 style: theme.textTheme.headlineMedium,
               ),
               const SizedBox(height: 25),
@@ -79,7 +80,11 @@ class MoviesPage extends StatelessWidget {
               const SizedBox(height: 25),
               Expanded(
                 child: MoviesTabs(
-                  tabs: ["Now playing", "Horrors", "Upcoming"],
+                  tabs: [
+                    S.of(context).nowPlaying,
+                    S.of(context).horrors,
+                    S.of(context).upcoming,
+                  ],
                   children: [
                     BlocBuilder<TrendingMoviesCubit, TrendingMoviesStates>(
                       builder: (context, state) {

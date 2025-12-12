@@ -1,3 +1,4 @@
+import 'package:clean_movies_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class SearchTextFieldWidget extends StatelessWidget {
@@ -18,7 +19,7 @@ class SearchTextFieldWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide.none,
         ),
-        hintText: 'Search',
+        hintText: S.of(context).search,
         hintStyle: theme.textTheme.labelMedium,
         suffixIcon: const ImageIcon(
           AssetImage('assets/icons/search.png'),

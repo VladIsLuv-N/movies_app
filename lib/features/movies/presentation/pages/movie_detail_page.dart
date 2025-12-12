@@ -5,6 +5,7 @@ import 'package:clean_movies_app/features/movies/presentation/cubits/movie_detai
 import 'package:clean_movies_app/features/movies/presentation/widgets/header_movie_details.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/movie_info_widget.dart';
 import 'package:clean_movies_app/features/movies/presentation/widgets/movies_tabs.dart';
+import 'package:clean_movies_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +45,7 @@ class _MovieDetailView extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: Text(
-                'Detail',
+                S.of(context).detail,
                 style: theme.textTheme.bodyMedium?.copyWith(fontSize: 18),
               ),
               leading: IconButton(
@@ -85,7 +86,7 @@ class _MovieDetailView extends StatelessWidget {
                       vertical: 30,
                     ),
                     child: MoviesTabs(
-                      tabs: ['Description', 'Cast', 'Reviews'],
+                      tabs: [S.of(context).description, S.of(context).cast, S.of(context).reviews],
                       children: [
                         SingleChildScrollView(
                           child: Text(
