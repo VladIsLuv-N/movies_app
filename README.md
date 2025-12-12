@@ -18,6 +18,7 @@
 ✔ Кэширование изображение через Сached_network_image                                            
 ✔ Поиск фильмов                                            
 ✔ Страница подробной информации о фильме                                            
+✔ Локализаця - ru, en (пока без API)                                            
 
 ---
 
@@ -28,7 +29,8 @@
 - **GetIt**  
 - **Cached_network_image**  
 - **Dio**  
-- **Clean Architecture**  
+- **Clean Architecture**
+- **Flutter Intl**  
 
 ---
 
