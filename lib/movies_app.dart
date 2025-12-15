@@ -24,7 +24,7 @@ class MoviesApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      theme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
       home: MultiBlocProvider(
         providers: [
           BlocProvider(

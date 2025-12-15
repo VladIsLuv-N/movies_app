@@ -9,9 +9,13 @@ class SearchRepositoryImpl implements SearchRepostitory {
 
   @override
   Future<SearchQuery> getSearchMovies(String query, int page) async {
-    final searchMovieModelsQuery = await api.getSearchMovies(query, page);
-    final movies = searchMovieModelsQuery.toEntity();
+    try {
+      final searchMovieModelsQuery = await api.getSearchMovies(query, page);
+      final movies = searchMovieModelsQuery.toEntity();
 
-    return movies;
+      return movies;
+    } catch (_) {
+      rethrow;
+    }
   }
 }

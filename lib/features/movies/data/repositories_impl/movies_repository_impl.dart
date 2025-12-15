@@ -9,41 +9,61 @@ class MoviesRepositoryImpl implements MoviesRepository {
 
   @override
   Future<List<Movie>> getPopularMovies() async {
-    final movieModelsList = await api.getPopularMovies();
-    final movies = movieModelsList.map((movie) => movie.toEntity()).toList();
+    try {
+      final movieModelsList = await api.getPopularMovies();
+      final movies = movieModelsList.map((movie) => movie.toEntity()).toList();
 
-    return movies;
+      return movies;
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override
   Future<List<Movie>> getTrendingMovies() async {
-    final movieModelsList = await api.getTrendingMovies();
-    final movies = movieModelsList.map((movie) => movie.toEntity()).toList();
+    try {
+      final movieModelsList = await api.getTrendingMovies();
+      final movies = movieModelsList.map((movie) => movie.toEntity()).toList();
 
-    return movies;
+      return movies;
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override
   Future<List<Movie>> getHorrorsMovies() async {
-    final movieModelsList = await api.getHorrorsMovies();
-    final movies = movieModelsList.map((movie) => movie.toEntity()).toList();
+    try {
+      final movieModelsList = await api.getHorrorsMovies();
+      final movies = movieModelsList.map((movie) => movie.toEntity()).toList();
 
-    return movies;
+      return movies;
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override
   Future<List<Movie>> getUpcomingMovies() async {
-    final movieModelsList = await api.getUpcomingMovies();
-    final movies = movieModelsList.map((movie) => movie.toEntity()).toList();
+    try {
+      final movieModelsList = await api.getUpcomingMovies();
+      final movies = movieModelsList.map((movie) => movie.toEntity()).toList();
 
-    return movies;
+      return movies;
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override
   Future<Movie> getMovie(int id) async {
-    final movieModel = await api.getMovie(id);
-    final movie = movieModel.toEntity();
+    try {
+      final movieModel = await api.getMovie(id);
+      final movie = movieModel.toEntity();
 
-    return movie;
+      return movie;
+    } catch (_) {
+      rethrow;
+    }
   }
 }
