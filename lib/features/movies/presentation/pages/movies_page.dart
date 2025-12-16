@@ -1,3 +1,4 @@
+import 'package:clean_movies_app/core/widgets/theme_toggle_button.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit/horrors_movies_cubit.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/horrors_movies_cubit/horrors_movies_states.dart';
 import 'package:clean_movies_app/features/movies/presentation/cubits/popular_movies_cubit/popular_movies_cubit.dart';
@@ -25,15 +26,24 @@ class MoviesPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 25,
+            vertical: 10,
+          ).copyWith(top: 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                S.of(context).homePageTitle,
-                style: theme.textTheme.headlineMedium,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).homePageTitle,
+                    style: theme.textTheme.headlineMedium,
+                  ),
+                  const ThemeToggleButton(),
+                ],
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 15),
               const SearchButton(),
               const SizedBox(height: 25),
               SizedBox(
