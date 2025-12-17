@@ -1,9 +1,18 @@
+import 'package:clean_movies_app/core/extensions/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
   static final darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
+
+    extensions: [
+      const AppColors(
+        outlineTextBg: Color(0xFF3A3F47),
+        buttonBg: Color(0xFF3A3F47),
+        outlineTextBorder: Color(0xFF0296E5),
+      ),
+    ],
 
     scaffoldBackgroundColor: const Color(0xFF242A32),
 
@@ -41,6 +50,15 @@ class AppTheme {
       ),
     ),
 
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide.none,
+      ),
+      filled: true,
+      fillColor: const Color(0xFF3A3F47),
+    ),
+
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: Color(0xFF67686D),
       strokeWidth: 5,
@@ -51,6 +69,14 @@ class AppTheme {
   static final lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
+
+    extensions: [
+      const AppColors(
+        outlineTextBg: Color(0xFFC6B5B5),
+        buttonBg: Color(0xFFC6B5B5),
+        outlineTextBorder: Colors.black,
+      ),
+    ],
 
     scaffoldBackgroundColor: const Color(0xFFffeded),
 
@@ -86,6 +112,15 @@ class AppTheme {
         color: Color(0xFF242A32),
         fontWeight: FontWeight.w500,
       ),
+    ),
+
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide.none,
+      ),
+      filled: true,
+      fillColor: const Color(0xFFC6B5B5),
     ),
 
     progressIndicatorTheme: const ProgressIndicatorThemeData(

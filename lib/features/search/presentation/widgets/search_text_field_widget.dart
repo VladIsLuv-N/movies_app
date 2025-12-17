@@ -15,18 +15,12 @@ class SearchTextFieldWidget extends StatelessWidget {
       cursorColor: Colors.white,
       style: theme.textTheme.labelMedium?.copyWith(color: Colors.white),
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide.none,
-        ),
         hintText: S.of(context).search,
         hintStyle: theme.textTheme.labelMedium,
         suffixIcon: const ImageIcon(
           AssetImage('assets/icons/search.png'),
           color: Color(0xFF67686D),
         ),
-        filled: true,
-        fillColor: const Color(0xFF3A3F47),
       ),
     );
   }
