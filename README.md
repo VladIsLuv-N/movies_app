@@ -4,8 +4,7 @@
 ---
 
 ## 📸 Скриншоты  
-<img src="assets/images/scr1.png" alt="" style="width: 30%;">   <img src="assets/images/scr2.png" alt="" style="width: 30%;">   <img src="assets/images/scr3.png" alt="" style="width: 30%;">
-<img src="assets/images/scr4.png" alt="" style="width: 30%;">
+<img src="assets/images/scr1.png" alt="" style="width: 20%;"> <img src="assets/images/scr2.png" alt="" style="width: 20%;"> <img src="assets/images/scr3.png" alt="" style="width: 20%;"> <img src="assets/images/scr4.png" alt="" style="width: 20%;">
 
 ---
 
@@ -20,6 +19,7 @@
 ✔ Поиск фильмов                                            
 ✔ Страница подробной информации о фильме                                            
 ✔ Локализаця - ru, en (пока без API)                                            
+✔ Поддержка темной и светлой темы                                            
 
 ---
 
@@ -32,6 +32,7 @@
 - **Dio**  
 - **Clean Architecture**
 - **Flutter Intl**  
+- **SharedPreferences**  
 
 ---
 
@@ -76,7 +77,6 @@ lib/
 
 ## 📌 В планах реализации  
 - ⭐ **Добавление фильмов в избранное (локальное хранилище)**  
-- 🌓 **Поддержка тёмной и светлой темы**  
 
 ---
 
